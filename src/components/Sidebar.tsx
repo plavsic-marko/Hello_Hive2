@@ -7,18 +7,18 @@ import sidebarData from "../data/SidebarData";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <div className="body-section">
-        <div className="header">
+      <div className="bodyContainer">
+        <div className="headerContainer">
           <DensityMediumIcon />
           <Typography variant="h5">hello resume</Typography>
         </div>
-        <div className="profile">
-          <div className="profile_name">
+        <div className="profileContainer">
+          <div className="profileContents">
             <Typography variant="body1">Marko Plavsic</Typography>
           </div>
         </div>
         <div>
-          <ul className="list-group">
+          <ul className="contentContainer">
             {sidebarData.map((item) => (
               <li className="sidebar-item" key={item.id}>
                 {item.icon}
