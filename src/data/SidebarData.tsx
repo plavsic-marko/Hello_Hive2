@@ -4,9 +4,9 @@ import PersonIcon from "@mui/icons-material/Person";
 import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
-import MarkChatReadOutlinedIcon from "@mui/icons-material/MarkChatReadOutlined";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const sidebarData = [
   {
@@ -46,22 +46,23 @@ const sidebarData = [
     icon: <ManageAccountsOutlinedIcon></ManageAccountsOutlinedIcon>,
     link: "/Acc",
   },
+
   {
     id: 7,
-    title: "Contact Us",
-    icon: <MarkChatReadOutlinedIcon />,
-    link: "/Acc",
-  },
-  {
-    id: 8,
     title: "Privacy Policy",
     icon: <VerifiedUserOutlinedIcon></VerifiedUserOutlinedIcon>,
     link: "/Acc",
   },
   {
-    id: 9,
+    id: 8,
     title: "Terms & Conditions",
     icon: <MenuBookOutlinedIcon></MenuBookOutlinedIcon>,
+    link: "/Acc",
+  },
+  {
+    id: 9,
+    title: "Sign Out",
+    icon: <LogoutIcon />,
     link: "/Acc",
   },
 ];

@@ -12,11 +12,17 @@ const Sidebar = () => {
           <DensityMediumIcon />
           <Typography variant="h5">hello resume</Typography>
         </div>
+        <div className="profile">
+          <div className="profile_name">
+            <Typography variant="body1">Marko Plavsic</Typography>
+          </div>
+        </div>
         <div>
           <ul className="list-group">
             {sidebarData.map((item) => (
               <li className="sidebar-item" key={item.id}>
                 {item.icon}
+                <span className="item_title">{item.title}</span>
               </li>
             ))}
           </ul>
