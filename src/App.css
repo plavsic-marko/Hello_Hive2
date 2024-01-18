@@ -1,3 +1,14 @@
+:root {
+
+
+  --backgroundTheme: rgb(230, 240, 248);
+  --purpleMain: #4A3291;
+  --barColor1: #12c2e9;
+  --barColor2: #c471ed;
+  --barColor3: #f64f59;
+  --barColor4: #91226c;
+
+}
    .App{
     width: 100vw;
     height: 100vh;
