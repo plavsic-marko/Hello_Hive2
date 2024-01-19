@@ -13,13 +13,13 @@ const sidebarData = [
     id: 1,
     title: "Home",
     icon: <GridViewIcon></GridViewIcon>,
-    link: "/home",
+    link: "/",
   },
   {
     id: 2,
     title: "Company Profile",
     icon: <PersonIcon></PersonIcon>,
-    link: "/FormData",
+    link: "/companyProfile",
   },
   {
     id: 3,

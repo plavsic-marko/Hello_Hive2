@@ -7,7 +7,7 @@ const HomePage = () => {
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt,
         mollitia!
       </p>
-      <Link to="/Company">CompanyProfile</Link>
+      <Link to="/companyProfile">CompanyProfile</Link>
     </>
   );
 };

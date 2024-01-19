@@ -22,4 +22,21 @@
     
   }
 
+  .app_wrapper{
+    display: flex;
+    flex-direction: row;
+    background-color: #B6D3E2;
+
+  }
+
+  .companyProfileContainer{
+    width: "100vw"; 
+    height: "100vh";
+    background: red;
+    margin: "15px";
+    border-radius:  "15px";
+    padding: "15px";
+
+  }
+
 
