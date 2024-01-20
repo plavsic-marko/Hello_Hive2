@@ -9,14 +9,12 @@
   --barColor4: #91226c;
 
 }
-   .App{
-    width: 100vw;
-    height: 100vh;
-    
-   }
+
    
    body {
-    font-family: Roboto, sans-serif;
+  
+    font-style: normal;
+    font-family: Roboto;
     margin: 0;
     padding: 0;
     
@@ -25,18 +23,28 @@
   .app_wrapper{
     display: flex;
     flex-direction: row;
-    background-color: #B6D3E2;
+    background-color:#B6D3E2;
+  
+}
 
+.content_wrapper{
+  background-color: #B6D3E2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+  
+.headerContainer{
+  color: var(--purpleMain );
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 90%; /* 21.6px */
   }
 
-  .companyProfileContainer{
-    width: "100vw"; 
-    height: "100vh";
-    background: red;
-    margin: "15px";
-    border-radius:  "15px";
-    padding: "15px";
+  
+  
 
-  }
-
+  
 

@@ -25,7 +25,7 @@ const sidebarData = [
     id: 3,
     title: "Postings",
     icon: <WorkOutlineOutlinedIcon />,
-    link: "/Opp",
+    link: "/posting",
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const sidebarData = [
     id: 5,
     title: "Users",
     icon: <AccountCircleOutlinedIcon />,
-    link: "/Acc",
+    link: "/users",
   },
   {
     id: 6,
