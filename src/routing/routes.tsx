@@ -4,6 +4,9 @@ import CompanyProfile from "./CompanyProfile";
 import Users from "./Users";
 import Layout from "../Layout";
 import Posting from "./Postings";
+import MyAccount from "./MyAccount";
+import Applicants from "./Applicants";
+import CreateOpportunity from "../components/CreateOpportunity";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +17,9 @@ const router = createBrowserRouter([
       { path: "companyProfile", element: <CompanyProfile /> },
       { path: "users", element: <Users /> },
       { path: "posting", element: <Posting /> },
+      { path: "myAccount", element: <MyAccount /> },
+      { path: "applicants", element: <Applicants /> },
+      { path: "pajaPatak", element: <CreateOpportunity /> },
     ],
   },
 ]);

@@ -31,7 +31,7 @@ const sidebarData = [
     id: 4,
     title: "Applicants",
     icon: <GradingOutlinedIcon />,
-    link: "/home",
+    link: "/applicants",
   },
 
   {
@@ -44,7 +44,7 @@ const sidebarData = [
     id: 6,
     title: "MyAccount",
     icon: <ManageAccountsOutlinedIcon></ManageAccountsOutlinedIcon>,
-    link: "/Acc",
+    link: "/myAccount",
   },
 
   {
