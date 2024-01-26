@@ -1,11 +1,11 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
-const PrivacyPolicy = () => {
+const HomePage = () => {
   return (
-    <div>
-      <h1>PrivacyPolicy</h1>
-    </div>
+    <>
+      <p>Dobro došli :) !</p>
+    </>
   );
 };
 
-export default PrivacyPolicy;
+export default HomePage;

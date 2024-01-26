@@ -7,6 +7,7 @@ import Posting from "./Postings";
 import MyAccount from "./MyAccount";
 import Applicants from "./Applicants";
 import CreateOpportunity from "../components/CreateOpportunity";
+import PrivatePolicy from "./PrivacyPolicy";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "myAccount", element: <MyAccount /> },
       { path: "applicants", element: <Applicants /> },
       { path: "pajaPatak", element: <CreateOpportunity /> },
+      { path: "privatePolicy", element: <PrivatePolicy /> },
     ],
   },
 ]);

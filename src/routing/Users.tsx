@@ -11,11 +11,21 @@ import {
   Box,
   IconButton,
   InputBase,
+  Modal,
+  Typography,
+  Input,
 } from "@mui/material";
 import usersData from "../data/UsersData";
 import "../components/Users.css";
 import Pagination from "@mui/material/Pagination";
 import SearchIcon from "@mui/icons-material/Search";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
 const headRowStyle = {
   color: "#12c2e9",
@@ -43,6 +53,19 @@ const statusTextLive = {
 const Users = () => {
   const [page, setPage] = useState(1);
 
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpen = () => setOpenModal(true);
+  const handleClose = () => setOpenModal(false);
+
+  const ariaLabel = { "aria-label": "description" };
+
+  const currencies = [
+    {
+      value: "Admin",
+      label: "Admin",
+    },
+  ];
+
   return (
     <div className="content_wrapper">
       <div className="companyProfileContainer">
@@ -64,9 +87,10 @@ const Users = () => {
               </IconButton>
               <InputBase placeholder="Search (Title, location...)" />
             </Box>
+
             <Button
               variant="contained"
-              onClick={() => console.log("kliknuo sam")}
+              onClick={handleOpen}
               style={{
                 marginRight: 32,
                 borderRadius: 20,
@@ -75,8 +99,106 @@ const Users = () => {
                 fontWeight: 500,
               }}
             >
-              Add New User
+              Open modal
             </Button>
+            <Modal
+              open={openModal}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <div className="modal_box">
+                <div className="header">
+                  <h3>Add User</h3>
+                  <h4>General Information</h4>
+                  <div className="forma_div_prva">
+                    <form className="prva_forma">
+                      <TextField
+                        required
+                        id="standard-required"
+                        label="First Name"
+                        placeholder="Enter first name"
+                        variant="standard"
+                      />
+                      <TextField
+                        required
+                        id="standard-required"
+                        label="Last Name"
+                        placeholder="Enter last name"
+                        variant="standard"
+                      />
+                    </form>
+                    <form className="druga_forma">
+                      <TextField
+                        required
+                        id="standard-required"
+                        label="Email"
+                        placeholder="Enter users email"
+                        variant="standard"
+                      />
+                      <TextField
+                        required
+                        id="standard-required"
+                        label="Phone number"
+                        placeholder="+1(555)000-000"
+                        variant="standard"
+                      />
+                    </form>
+                    <form className="treca_forma">
+                      <TextField
+                        required
+                        id="standard-required"
+                        label="Company Email Domain"
+                        placeholder="Enter Company Email Domain"
+                        variant="standard"
+                      />
+                      <TextField
+                        id="standard-select-currency"
+                        select
+                        label="Type"
+                        required
+                        placeholder="Select user"
+                        defaultValue="Select user"
+                        variant="standard"
+                        helperText="Select user"
+                      >
+                        {currencies.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+                    </form>
+                  </div>
+                  <div className="forma_div_druga">
+                    <h3>Permission</h3>
+                    <FormControl>
+                      <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
+                      <RadioGroup
+                        aria-labelledby="demo-radio-buttons-group-label"
+                        defaultValue="view"
+                        name="radio-buttons-group"
+                      >
+                        <FormControlLabel
+                          value="view"
+                          control={<Radio />}
+                          label="View"
+                        />{" "}
+                        <p>User can view information on platform</p>
+                        <FormControlLabel
+                          value="edit"
+                          control={<Radio />}
+                          label="Edit"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                  </div>
+                  <div className="forma_div_treca">
+                    <h3>Permission</h3>
+                  </div>
+                </div>
+              </div>
+            </Modal>
           </div>
         </div>
         <div className="user_table">
@@ -108,7 +230,7 @@ const Users = () => {
                     key={item.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell sx={fieldTextName} scope="row" align="center">
+                    <TableCell sx={fieldTextName} scope="row" align="left">
                       <div className="nameContainer">
                         <div className="title"></div>
                         {item.name}

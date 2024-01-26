@@ -1,0 +1,8 @@
+.headLine_container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button_container{
+  padding: 15px;
+}

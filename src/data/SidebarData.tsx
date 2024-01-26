@@ -51,7 +51,7 @@ const sidebarData = [
     id: 7,
     title: "Privacy Policy",
     icon: <VerifiedUserOutlinedIcon></VerifiedUserOutlinedIcon>,
-    link: "/Acc",
+    link: "/privatePolicy",
   },
   {
     id: 8,
