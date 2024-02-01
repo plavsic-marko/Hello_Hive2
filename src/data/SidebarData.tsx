@@ -57,13 +57,13 @@ const sidebarData = [
     id: 8,
     title: "Terms & Conditions",
     icon: <MenuBookOutlinedIcon></MenuBookOutlinedIcon>,
-    link: "/Acc",
+    link: "/termsConditions",
   },
   {
     id: 9,
     title: "Sign Out",
     icon: <LogoutIcon />,
-    link: "/Acc",
+    link: "/signOut",
   },
 ];
 

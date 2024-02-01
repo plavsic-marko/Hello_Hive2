@@ -1,0 +1,25 @@
+.start{
+    display: flex;
+    justify-content: center;
+    width: 1900px;
+    margin-top: 200px;
+    font-weight: bold;
+   
+}
+
+.label{
+    
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.email{
+    display: block;
+    width: 400px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+  
+    border-radius: 4px;
+    margin-bottom: 20px;
+}

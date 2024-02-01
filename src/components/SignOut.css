@@ -1,0 +1,53 @@
+.modal_box2{
+    background: white;
+    display: flex;  
+    flex-direction: column;
+    position: absolute;
+    top: 5%;
+    left: 40%;
+    color: black;
+    width: 370px;
+    height: 250px;
+    padding: var(--Padding-padding-24, 24px);
+    border-radius: 20px;
+    
+}
+
+.Icon_box{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    height: 30px;
+    margin-top: 20px;
+   
+}
+.Icon_box2{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.tekst_box{
+    color: #667085;
+    font: 14px;
+}
+
+.error {
+    color: red;
+    font-size: 0.75rem;
+    text-align: left;
+    margin-top: 0.25rem;
+  }
+
+  input.input-error,
+select.input-error {
+  border-color: red;
+}
+
+  button:disabled {
+    opacity: 0.35;
+    
+  }
+  
