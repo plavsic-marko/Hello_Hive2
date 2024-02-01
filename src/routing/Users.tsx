@@ -66,7 +66,7 @@ interface MyFormValues {
   zipCode: number;
 }
 const onSubmit = async (values: any, actions: any) => {
-  console.log("UPAO!");
+  console.log("to je to");
   console.log(values);
   console.log(actions);
   await new Promise((resolve) => setTimeout(resolve, 1000));

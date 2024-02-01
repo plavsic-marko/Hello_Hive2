@@ -28,7 +28,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
-import { useFormik } from "formik";
+import { FormikErrors, useFormik } from "formik";
 import { userSchema } from "../schemas";
 
 const headRowStyle = {
@@ -57,12 +57,12 @@ interface MyFormValues {
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
   companyEmail: string;
   state: string;
   city: string;
   address: string;
-  zipCode: number;
+  zipCode: string;
 }
 const onSubmit = async (values: any, actions: any) => {
   console.log("to je to!");
@@ -95,6 +95,10 @@ const Users = () => {
     },
     validationSchema: userSchema,
     onSubmit,
+
+    validate: (values: MyFormValues) => {
+      const errors: FormikErrors<MyFormValues> = {};
+    },
   });
 
   console.log(errors);
@@ -102,12 +106,10 @@ const Users = () => {
   const [page, setPage] = useState(1);
 
   const [openModal, setOpenModal] = useState(false);
-  const handleOpen = () => setOpenModal(true);
-  const handleClose = () => setOpenModal(false);
+  const toggleModal = () => setOpenModal(!openModal);
 
   const [openModal1, setOpenModal1] = useState(false);
-  const handleOpen1 = () => setOpenModal1(true);
-  const handleClose1 = () => setOpenModal(false);
+  const toggleModal1 = () => setOpenModal1(!openModal1);
 
   const ariaLabel = { "aria-label": "description" };
 
@@ -141,7 +143,7 @@ const Users = () => {
             </Box>
             <Button
               variant="contained"
-              onClick={handleOpen1}
+              onClick={toggleModal1}
               style={{
                 marginRight: 32,
                 borderRadius: 20,
@@ -156,7 +158,7 @@ const Users = () => {
               open={openModal1}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
-              onClose={handleClose1}
+              onClose={toggleModal1}
             >
               <form className="forma_1">
                 <div className="modal_box2">
@@ -164,7 +166,7 @@ const Users = () => {
                     <CheckIcon color="primary"></CheckIcon>
                     <div className="Icon_box2">
                       <IconButton
-                        onClick={handleClose1}
+                        onClick={toggleModal1}
                         style={{ float: "right" }}
                       >
                         <CloseIcon></CloseIcon>
@@ -185,7 +187,7 @@ const Users = () => {
 
             <Button
               variant="contained"
-              onClick={handleOpen}
+              onClick={toggleModal}
               style={{
                 marginRight: 32,
                 borderRadius: 20,
@@ -201,7 +203,7 @@ const Users = () => {
               open={openModal}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
-              onClose={handleClose}
+              onClose={toggleModal}
             >
               <form className="forma_1" onSubmit={handleSubmit}>
                 <div className="modal_box">
@@ -209,7 +211,7 @@ const Users = () => {
                     <h3>
                       Add User{" "}
                       <IconButton
-                        onClick={handleClose}
+                        onClick={toggleModal}
                         style={{ float: "right" }}
                       >
                         <CloseIcon></CloseIcon>
@@ -221,100 +223,110 @@ const Users = () => {
 
                     <div className="forma_div_prva">
                       <div className="prva_forma">
-                        <TextField
-                          required
-                          color="secondary"
-                          id="firstName"
-                          label="First Name"
-                          placeholder="Enter first name"
-                          variant="standard"
-                          onChange={handleChange}
-                          value={values.firstName}
-                          onBlur={handleBlur}
-                          className={
-                            errors.firstName && touched.firstName
-                              ? "input-error"
-                              : ""
-                          }
-                        />
-                        {errors.firstName && touched.firstName && (
-                          <p className="error">{errors.firstName}</p>
-                        )}
-                        <TextField
-                          required
-                          id="lastName"
-                          label="Last Name"
-                          placeholder="Enter last name"
-                          variant="standard"
-                          onChange={handleChange}
-                          value={values.lastName}
-                          onBlur={handleBlur}
-                          className={
-                            errors.lastName && touched.lastName
-                              ? "input-error"
-                              : ""
-                          }
-                        />
-                        {errors.lastName && touched.lastName && (
-                          <p className="error">{errors.lastName}</p>
-                        )}
+                        <div className="flexColumn">
+                          <TextField
+                            required
+                            color="secondary"
+                            id="firstName"
+                            label="First Name"
+                            placeholder="Enter first name"
+                            variant="standard"
+                            onChange={handleChange}
+                            value={values.firstName}
+                            onBlur={handleBlur}
+                            className={
+                              errors.firstName && touched.firstName
+                                ? "input-error"
+                                : ""
+                            }
+                          />
+                          {errors.firstName && touched.firstName && (
+                            <p className="error">{errors.firstName}</p>
+                          )}
+                        </div>
+                        <div className="flexColumn">
+                          <TextField
+                            required
+                            id="lastName"
+                            label="Last Name"
+                            placeholder="Enter last name"
+                            variant="standard"
+                            onChange={handleChange}
+                            value={values.lastName}
+                            onBlur={handleBlur}
+                            className={
+                              errors.lastName && touched.lastName
+                                ? "input-error"
+                                : ""
+                            }
+                          />
+                          {errors.lastName && touched.lastName && (
+                            <p className="error">{errors.lastName}</p>
+                          )}
+                        </div>
                       </div>
                       <div className="druga_forma">
-                        <TextField
-                          required
-                          id="email"
-                          label="Email"
-                          placeholder="Enter users email"
-                          variant="standard"
-                          onChange={handleChange}
-                          value={values.email}
-                          onBlur={handleBlur}
-                          className={
-                            errors.email && touched.email ? "input-error" : ""
-                          }
-                        />
-                        {errors.email && touched.email && (
-                          <p className="error">{errors.email}</p>
-                        )}
-                        <TextField
-                          required
-                          id="phoneNumber"
-                          label="Phone number"
-                          placeholder="+1(555)000-000"
-                          variant="standard"
-                          onChange={handleChange}
-                          value={values.phoneNumber}
-                          onBlur={handleBlur}
-                          className={
-                            errors.phoneNumber && touched.phoneNumber
-                              ? "input-error"
-                              : ""
-                          }
-                        />
-                        {errors.phoneNumber && touched.phoneNumber && (
-                          <p className="error">{errors.phoneNumber}</p>
-                        )}
+                        <div className="flexColumn">
+                          <TextField
+                            required
+                            id="email"
+                            label="Email"
+                            placeholder="Enter users email"
+                            variant="standard"
+                            onChange={handleChange}
+                            value={values.email}
+                            onBlur={handleBlur}
+                            className={
+                              errors.email && touched.email ? "input-error" : ""
+                            }
+                          />
+                          {errors.email && touched.email && (
+                            <p className="error">{errors.email}</p>
+                          )}
+                        </div>
+                        <div className="flexColumn">
+                          <TextField
+                            required
+                            id="phoneNumber"
+                            label="Phone number"
+                            placeholder="+1(555)000-000"
+                            variant="standard"
+                            onChange={handleChange}
+                            value={values.phoneNumber}
+                            onBlur={handleBlur}
+                            className={
+                              errors.phoneNumber && touched.phoneNumber
+                                ? "input-error"
+                                : ""
+                            }
+                          />
+                          {errors.phoneNumber && touched.phoneNumber && (
+                            <p className="error">{errors.phoneNumber}</p>
+                          )}
+                        </div>
                       </div>
                       <div className="treca_forma">
-                        <TextField
-                          required
-                          id="companyEmail"
-                          label="Company Email Domain"
-                          fullWidth
-                          placeholder="Enter Company Email Domain"
-                          variant="standard"
-                          onChange={handleChange}
-                          value={values.companyEmail}
-                          onBlur={handleBlur}
-                          className={
-                            errors.companyEmail && touched.companyEmail
-                              ? "input-error"
-                              : ""
-                          }
-                        />
-                        {errors.companyEmail && touched.companyEmail && (
-                          <p className="error">{errors.companyEmail}</p>
-                        )}
+                        <div className="flexColumn">
+                          <TextField
+                            required
+                            id="companyEmail"
+                            label="Company Email Domain"
+                            fullWidth
+                            placeholder="Enter Company Email Domain"
+                            variant="standard"
+                            onChange={handleChange}
+                            value={values.companyEmail}
+                            onBlur={handleBlur}
+                            className={
+                              errors.companyEmail && touched.companyEmail
+                                ? "input-error"
+                                : ""
+                            }
+                          />
+                          {errors.companyEmail && touched.companyEmail && (
+                            <p className="error">{errors.companyEmail}</p>
+                          )}
+                        </div>
                       </div>
                     </div>
                     <div className="forma_div_druga">
@@ -324,76 +336,86 @@ const Users = () => {
                       <h4>Adresse</h4>
                       <div className="forma_div_prva">
                         <div className="prva_forma">
-                          <TextField
-                            required
-                            id="state"
-                            label="State"
-                            placeholder="Select State"
-                            variant="standard"
-                            onChange={handleChange}
-                            value={values.state}
-                            onBlur={handleBlur}
-                            className={
-                              errors.state && touched.state ? "input-error" : ""
-                            }
-                          />
-                          {errors.state && touched.state && (
-                            <p className="error">{errors.state}</p>
-                          )}
-                          <TextField
-                            required
-                            id="city"
-                            label="City"
-                            placeholder="Select city"
-                            variant="standard"
-                            onChange={handleChange}
-                            value={values.city}
-                            onBlur={handleBlur}
-                            className={
-                              errors.city && touched.city ? "input-error" : ""
-                            }
-                          />
-                          {errors.city && touched.city && (
-                            <p className="error">{errors.city}</p>
-                          )}
+                          <div className="flexColumn">
+                            <TextField
+                              required
+                              id="state"
+                              label="State"
+                              placeholder="Select State"
+                              variant="standard"
+                              onChange={handleChange}
+                              value={values.state}
+                              onBlur={handleBlur}
+                              className={
+                                errors.state && touched.state
+                                  ? "input-error"
+                                  : ""
+                              }
+                            />
+                            {errors.state && touched.state && (
+                              <p className="error">{errors.state}</p>
+                            )}
+                          </div>
+                          <div className="flexColumn">
+                            <TextField
+                              required
+                              id="city"
+                              label="City"
+                              placeholder="Select city"
+                              variant="standard"
+                              onChange={handleChange}
+                              value={values.city}
+                              onBlur={handleBlur}
+                              className={
+                                errors.city && touched.city ? "input-error" : ""
+                              }
+                            />
+                            {errors.city && touched.city && (
+                              <p className="error">{errors.city}</p>
+                            )}
+                          </div>
                         </div>
                         <div className="druga_forma">
-                          <TextField
-                            required
-                            id="address"
-                            label="Address line"
-                            placeholder="Enter addresse"
-                            variant="standard"
-                            onChange={handleChange}
-                            value={values.address}
-                            onBlur={handleBlur}
-                            className={
-                              errors.address && touched.address
-                                ? "input-error"
-                                : ""
-                            }
-                          />
-                          {errors.address && touched.address && (
-                            <p className="error">{errors.address}</p>
-                          )}
-                          <TextField
-                            required
-                            id="zipCode"
-                            label="Zip code"
-                            placeholder="Enter Zip code"
-                            variant="standard"
-                            onChange={handleChange}
-                            value={values.zipCode}
-                            onBlur={handleBlur}
-                            className={
-                              errors.zipCode && touched.zipCode
-                                ? "input-error"
-                                : ""
-                            }
-                          />
-                          {errors.zipCode && touched.zipCode && (
-                            <p className="error">{errors.zipCode}</p>
-                          )}
+                          <div className="flexColumn">
+                            <TextField
+                              required
+                              id="address"
+                              label="Address line"
+                              placeholder="Enter addresse"
+                              variant="standard"
+                              onChange={handleChange}
+                              value={values.address}
+                              onBlur={handleBlur}
+                              className={
+                                errors.address && touched.address
+                                  ? "input-error"
+                                  : ""
+                              }
+                            />
+                            {errors.address && touched.address && (
+                              <p className="error">{errors.address}</p>
+                            )}
+                          </div>
+                          <div className="flexColumn">
+                            <TextField
+                              required
+                              id="zipCode"
+                              label="Zip code"
+                              placeholder="Enter Zip code"
+                              variant="standard"
+                              onChange={handleChange}
+                              value={values.zipCode}
+                              onBlur={handleBlur}
+                              className={
+                                errors.zipCode && touched.zipCode
+                                  ? "input-error"
+                                  : ""
+                              }
+                            />
+                            {errors.zipCode && touched.zipCode && (
+                              <p className="error">{errors.zipCode}</p>
+                            )}
+                          </div>
                         </div>
                         <div className="button_modal">
                           <Button

@@ -51,3 +51,7 @@ select.input-error {
     
   }
   
+  .flexColumn{
+    display: flex;
+    flex-direction: column;
+  }
