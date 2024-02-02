@@ -19,7 +19,7 @@ const sidebarData = [
     id: 2,
     title: "Company Profile",
     icon: <PersonIcon></PersonIcon>,
-    link: "/companyProfile",
+    link: "/createCompanyProfile",
   },
   {
     id: 3,

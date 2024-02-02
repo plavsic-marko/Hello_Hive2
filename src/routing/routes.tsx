@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./HomePage";
-import CompanyProfile from "./CompanyProfile";
+import CreateCompanyProfile from "./CreateCompanyProfile";
 import Users from "./Users";
 import Layout from "../Layout";
 import Posting from "./Postings";
@@ -10,6 +10,7 @@ import CreateOpportunity from "../components/CreateOpportunity";
 import PrivatePolicy from "./PrivacyPolicy";
 import SignOut from "./SignOut";
 import TermsConditions from "./TermsConditions";
+import CompanyProfile from "../components/CompanyProfile";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "companyProfile", element: <CompanyProfile /> },
+      { path: "createCompanyProfile", element: <CreateCompanyProfile /> },
       { path: "users", element: <Users /> },
       { path: "posting", element: <Posting /> },
       { path: "myAccount", element: <MyAccount /> },
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "privatePolicy", element: <PrivatePolicy /> },
       { path: "signOut", element: <SignOut /> },
       { path: "termsConditions", element: <TermsConditions /> },
+      { path: "companyProfile", element: <CompanyProfile /> },
     ],
   },
 ]);

@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/CompanyProfile.css";
+import "../components/CreateCompanyProfile.css";
 import AddIcon from "@mui/icons-material/Add";
 
 const CompanyProfile = () => {
