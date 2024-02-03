@@ -1,8 +1,4 @@
-import React from "react";
 import "../components/CompanyProfile.css";
-import AddIcon from "@mui/icons-material/Add";
-import ToggleOffIcon from "@mui/icons-material/ToggleOff";
-import { IconButton } from "@mui/material";
 
 const CompanyProfile = () => {
   return (

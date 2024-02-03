@@ -59,6 +59,7 @@ interface MyFormValues {
   email: string;
   phoneNumber: string;
   companyEmail: string;
+  radioView: string;
   state: string;
   city: string;
   address: string;
@@ -88,6 +89,7 @@ const Users = () => {
       email: "",
       phoneNumber: "",
       companyEmail: "",
+      radioView: "",
       state: "",
       city: "",
       address: "",
@@ -331,6 +333,38 @@ const Users = () => {
                     </div>
                     <div className="forma_div_druga">
                       <h4>Permission</h4>
+
+                      <FormLabel id="radioView"></FormLabel>
+                      <RadioGroup
+                        aria-labelledby="demo-radio-buttons-group-label"
+                        defaultValue="view"
+                        name="radioView"
+                        onChange={handleChange}
+                        value={values.radioView}
+                        onBlur={handleBlur}
+                      >
+                        <div className="radio_button1">
+                          <FormControlLabel
+                            className="radio1"
+                            value="view"
+                            control={<Radio />}
+                            label="View"
+                          />
+                          <p className="paragraf_1">
+                            (User can view information on the platform)
+                          </p>
+                        </div>
+                        <div className="radio_button2">
+                          <FormControlLabel
+                            value="edit"
+                            control={<Radio />}
+                            label="Edit"
+                          />
+                          <p className="paragraf_1">
+                            (User can view and create resums on the platform)
+                          </p>
+                        </div>
+                      </RadioGroup>
                     </div>
                     <div className="forma_div_treca">
                       <h4>Adresse</h4>

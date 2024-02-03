@@ -27,6 +27,7 @@ export const userSchema = yup.object().shape({
     .string()
     .email("Please enter a valid email")
     .required("Required"),
+  radioView: yup.string(),
   state: yup.string().required("Required"),
   city: yup.string().required("Required"),
   address: yup.string().required("Required"),
