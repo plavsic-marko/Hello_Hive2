@@ -1,23 +1,98 @@
 
+
+::-webkit-scrollbar {
+    width: 20px;
+    height: 13px;
+    color: #4A3291;
+    border-radius: inherit;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(189, 188, 188);
+    border: 5px solid white;
+    border-radius: inherit;
+    
+  }
+  
+    ::-webkit-scrollbar-track {
+      margin: 10px;
+      border-radius: inherit;
+    }
+  
+
+
 .companyProfileContainer{
     width: 92%;
     height: 91%;
     background-color: white;
     border-radius: 15px;
+    margin: 15px;
+    overflow-y: scroll;
     
  }
  
  .headerCompanyProfile{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    
+ }
+ .header_prvi{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;    
+    gap: 15px;
  }
 
-.headerContainer2{
-    color: silver;
+
+.save{
+    color: rgb(197, 190, 190);
+   
     
 }
- 
- 
 
+.button_cp{
+    background-color: inherit;
+    border: 0;
+}
+
+.button_cp:hover{
+    cursor: pointer;
+    background-color: blue;
+}
+
+.companyProfile_bodyContainer{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 10px;
+    background-color: rgba(219, 242, 252, 1);
+    border: 3px solid  rgb(144, 220, 252);
+    color: #28B2D8;
+    border-radius: 15px;
+}
+
+.companyProfile_bodyContainer_open{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 10px;
+    background-color: rgba(219, 242, 252, 1);
+    border: 3px solid  rgb(144, 220, 252);
+    color: #28B2D8;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+
+ 
+ 
+.form_container2{
+    display: flex;
+    width: 100%;
+    background: red;
+    overflow: hidden;
+}
  
 

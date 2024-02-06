@@ -29,6 +29,7 @@ import FormLabel from "@mui/material/FormLabel";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 import { useFormik } from "formik";
+import TablePagination from "@mui/material";
 
 const headRowStyle = {
   color: "#12c2e9",
@@ -91,7 +92,22 @@ const Users = () => {
     onSubmit,
   });
 
-  const [page, setPage] = useState(1);
+  /*const [page, setPage] = useState(1);*/
+
+  const [page, setPage] = useState(0);
+
+  /* ADJUSTMENT */
+
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (
+    event: React.ChangeEvent<unknown>,
+    newPage: number
+  ) => {
+    setPage(newPage);
+  };
+
+  const totalPages = Math.ceil(usersData.length / rowsPerPage) - 1;
 
   const [openModal, setOpenModal] = useState(false);
   const handleOpen = () => setOpenModal(true);
@@ -360,49 +376,45 @@ const Users = () => {
                 </TableCell>
               </TableHead>
               <TableBody>
-                {usersData.slice(0, 5).map((item) => (
-                  <TableRow
-                    key={item.id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell sx={fieldTextName} scope="row" align="left">
-                      <div className="nameContainer">
-                        <div className="title"></div>
-                        {item.name}
-                      </div>
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.contactInfo} <br /> {item.phoneNumber}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.companyEmail}
-                    </TableCell>
-                    <TableCell sx={statusTextLive} align="right">
-                      {item.userType}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.city} <br />
-                      {item.address}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.permission}
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {usersData
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((item) => (
+                    <TableRow
+                      key={item.id}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell sx={fieldTextName} scope="row" align="left">
+                        <div className="nameContainer">
+                          <div className="title"></div>
+                          {item.name}
+                        </div>
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.contactInfo} <br /> {item.phoneNumber}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.companyEmail}
+                      </TableCell>
+                      <TableCell sx={statusTextLive} align="right">
+                        {item.userType}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.city} <br />
+                        {item.address}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.permission}
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>
           <div className="pagination_table">
             <Pagination
-              size="large"
-              variant="outlined"
-              color="primary"
-              count={10}
               page={page}
-              onChange={(event, newPage) => setPage(newPage)}
-              shape="rounded"
-              hidePrevButton
-              hideNextButton
+              onChange={handleChangePage}
+              count={totalPages}
             />
           </div>
         </div>

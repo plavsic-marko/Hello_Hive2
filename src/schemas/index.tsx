@@ -33,3 +33,17 @@ export const userSchema = yup.object().shape({
   address: yup.string().required("Required"),
   zipCode: yup.number().required("Required"),
 });
+
+export const companyProfileSchema = yup.object().shape({
+  companyName: yup.string().required("Required"),
+  companyNumber: yup.number().required("Upisi broj!"),
+  companyEmailDomain: yup
+    .string()
+    .email("Please enter a valid email")
+    .required("Required"),
+  companyDescription: yup.string().required("Required"),
+  companyType: yup.string().required("Required"),
+  headquartersLocation: yup.string().required("Required"),
+  numberEmployees: yup.number().required("Enter number of employees"),
+  industries: yup.string().required("Required"),
+});

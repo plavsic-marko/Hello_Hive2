@@ -30,6 +30,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 import { FormikErrors, useFormik } from "formik";
 import { userSchema } from "../schemas";
+import { useNavigate } from "react-router-dom";
+import CompanyProfile from "./CreateCompanyProfile";
 
 const headRowStyle = {
   color: "#12c2e9",
@@ -103,9 +105,17 @@ const Users = () => {
     },
   });
 
-  console.log(errors);
+  const [page, setPage] = useState(0);
 
-  const [page, setPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const handleChangePage = (
+    event: React.ChangeEvent<unknown>,
+    newPage: number
+  ) => {
+    setPage(newPage);
+  };
+
+  const totalPages = Math.ceil(usersData.length / rowsPerPage);
 
   const [openModal, setOpenModal] = useState(false);
   const toggleModal = () => setOpenModal(!openModal);
@@ -114,6 +124,8 @@ const Users = () => {
   const toggleModal1 = () => setOpenModal1(!openModal1);
 
   const ariaLabel = { "aria-label": "description" };
+
+  const navigate = useNavigate();
 
   const currencies = [
     {
@@ -141,7 +153,10 @@ const Users = () => {
               <IconButton>
                 <SearchIcon style={{ color: "#12c2e9" }} />
               </IconButton>
-              <InputBase placeholder="Search (Title, location...)" />
+              <InputBase
+                name="search"
+                placeholder="Search (Title, location...)"
+              />
             </Box>
             <Button
               variant="contained"
@@ -155,6 +170,20 @@ const Users = () => {
               }}
             >
               User in table
+            </Button>
+
+            <Button
+              variant="contained"
+              onClick={() => navigate("/companyProfile")}
+              style={{
+                marginRight: 32,
+                borderRadius: 20,
+                backgroundColor: "#12c2e9",
+                textTransform: "none",
+                fontWeight: 500,
+              }}
+            >
+              Sledeca strana
             </Button>
             <Modal
               open={openModal1}
@@ -374,6 +403,7 @@ const Users = () => {
                             <TextField
                               required
                               id="state"
+                              name="state"
                               label="State"
                               placeholder="Select State"
                               variant="standard"
@@ -499,49 +529,45 @@ const Users = () => {
                 </TableCell>
               </TableHead>
               <TableBody>
-                {usersData.slice(0, 5).map((item) => (
-                  <TableRow
-                    key={item.id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell sx={fieldTextName} scope="row" align="left">
-                      <div className="nameContainer">
-                        <div className="title"></div>
-                        {item.name}
-                      </div>
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.contactInfo} <br /> {item.phoneNumber}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.companyEmail}
-                    </TableCell>
-                    <TableCell sx={statusTextLive} align="right">
-                      {item.userType}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.city} <br />
-                      {item.address}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.permission}
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {usersData
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((item) => (
+                    <TableRow
+                      key={item.id}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell sx={fieldTextName} scope="row" align="left">
+                        <div className="nameContainer">
+                          <div className="title"></div>
+                          {item.name}
+                        </div>
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.contactInfo} <br /> {item.phoneNumber}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.companyEmail}
+                      </TableCell>
+                      <TableCell sx={statusTextLive} align="right">
+                        {item.userType}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.city} <br />
+                        {item.address}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.permission}
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>
           <div className="pagination_table">
             <Pagination
-              size="large"
-              variant="outlined"
-              color="primary"
-              count={10}
               page={page}
-              onChange={(event, newPage) => setPage(newPage)}
-              shape="rounded"
-              hidePrevButton
-              hideNextButton
+              onChange={handleChangePage}
+              count={totalPages}
             />
           </div>
         </div>

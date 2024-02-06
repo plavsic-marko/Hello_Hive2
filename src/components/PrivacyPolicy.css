@@ -1,0 +1,41 @@
+.formaPrva{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: min-content;
+    padding: 20px;
+    background-color: rgb(218, 237, 243);
+} 
+
+.error {
+    color: red;
+    font-size: 0.75rem;
+    text-align: left;
+    margin-top: 0.25rem;
+  }
+
+  input.input-error,
+select.input-error {
+  border-color: red;
+  margin-inline: 40px;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.input-form{
+    background: inherit;
+    margin-inline: 40px;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+select.input-form{
+    background-color: white;
+}
+
+
+
+.dugme_forma{
+    margin-top: 15px;
+    background-color: green;
+}
