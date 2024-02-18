@@ -1,18 +1,35 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "../components/Applicants.css";
 import { useFormik } from "formik";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Aplicants = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
-      channel: "",
     },
     onSubmit: (values) => {
       console.log("Form data", values);
     },
   });
+  /* const addUser = () => {
+    const newUser = { name: "", email: "" };
+  };
+*/
+  const [inputData, setInputData] = useState({ name: "", email: "" });
+
+  const navigate = useNavigate();
+
+  axios
+    .post("https://jsonplaceholder.typicode.com/users", inputData)
+    .then((res) => {
+      alert("Data add Successfully");
+      navigate("/TermsConditions");
+    })
+    .catch((err) => console.log(err));
 
   //console.log("Form values", formik.values);
   return (
@@ -40,18 +57,7 @@ const Aplicants = () => {
           value={formik.values.email}
         />
 
-        <label htmlFor="channel" className="email">
-          Channel
-        </label>
-        <input
-          type="text"
-          id="channel"
-          className="form-control"
-          onChange={formik.handleChange}
-          value={formik.values.channel}
-        />
-
-        <button type="submit">Submit</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );

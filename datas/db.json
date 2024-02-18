@@ -1,0 +1,28 @@
+
+{
+    "users": [
+    
+        {
+            "name": "Marko",
+            "email": "markplavi@yahoo.com",
+            "channel": "proba1",
+            "id": "1"
+        },
+    
+        {
+            "name": "Luka",
+            "email": "lukazelieni@yahoo.com",
+            "channel": "proba2",
+            "id": "2"
+        },
+        {
+            "name": "Stefan",
+            "email":"stefancrenvni@yahoo.com",
+            "channel": "proba3",
+            "id": "3"
+        }
+    
+    ]
+    
+    }
+    
