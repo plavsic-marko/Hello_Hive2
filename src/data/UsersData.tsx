@@ -1,3 +1,4 @@
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 const usersData = [
   {
     id: 1,
@@ -8,7 +9,11 @@ const usersData = [
     userType: "Admin",
     city: "Novi Sad, 21000",
     address: "Detelinara, Kopernikova 10",
-    permission: <a href="#">View</a>,
+    permission: (
+      <a href="#">
+        <MoreVertIcon />
+      </a>
+    ),
   },
   {
     id: 2,
@@ -19,7 +24,11 @@ const usersData = [
     userType: "Admin",
     city: "Beograd, 11000",
     address: "Dorcul, Cara Dusana 10",
-    permission: <a href="#">View</a>,
+    permission: (
+      <a href="#">
+        <MoreVertIcon />
+      </a>
+    ),
   },
   {
     id: 3,
@@ -30,7 +39,11 @@ const usersData = [
     userType: "Admin",
     city: "Nis, 18000",
     address: "Tvrdjava, Zivojina Misica 10",
-    permission: <a href="#">View</a>,
+    permission: (
+      <a href="#">
+        <MoreVertIcon />
+      </a>
+    ),
   },
   {
     id: 4,

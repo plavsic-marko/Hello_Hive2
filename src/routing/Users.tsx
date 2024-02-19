@@ -30,6 +30,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 import { useFormik } from "formik";
 import TablePagination from "@mui/material";
+import Popup from "../components/Popup";
 
 const headRowStyle = {
   color: "#12c2e9",
@@ -121,6 +122,16 @@ const Users = () => {
       label: "Admin",
     },
   ];
+
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [anchor, setAnchor] = React.useState<null | HTMLElement>(null);
+
+  const handleClick = (item: any, event: React.MouseEvent<HTMLElement>) => {
+    setAnchor(anchor ? null : event.currentTarget);
+    setSelectedRow(item.id);
+  };
+  const open = Boolean(anchor);
+  const id = open ? "simple-popup" : undefined;
 
   return (
     <div className="content_wrapper">
@@ -375,6 +386,7 @@ const Users = () => {
                   Permission
                 </TableCell>
               </TableHead>
+              <Popup id={id} open={open} anchor={anchor} rowId={selectedRow} />
               <TableBody>
                 {usersData
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -403,7 +415,13 @@ const Users = () => {
                         {item.address}
                       </TableCell>
                       <TableCell sx={fieldText} align="right">
-                        {item.permission}
+                        <a
+                          href="#"
+                          onClick={(event) => handleClick(item, event)}
+                          data-id={item.id}
+                        >
+                          {item.permission}
+                        </a>
                       </TableCell>
                     </TableRow>
                   ))}
