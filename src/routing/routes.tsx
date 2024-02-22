@@ -11,6 +11,7 @@ import PrivatePolicy from "./PrivacyPolicy";
 import SignOut from "./SignOut";
 import TermsConditions from "./TermsConditions";
 import CompanyProfile from "../components/CompanyProfile";
+import NewOpportunity from "../components/NewOpportunity";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "signOut", element: <SignOut /> },
       { path: "termsConditions", element: <TermsConditions /> },
       { path: "companyProfile", element: <CompanyProfile /> },
+      { path: "newOpportunity", element: <NewOpportunity /> },
     ],
   },
 ]);

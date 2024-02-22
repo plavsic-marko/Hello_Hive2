@@ -13,7 +13,7 @@ const CompanyProfile = () => {
             <h2>Looks like you do not have any Opportunity postings.</h2>
             <h4>Select the option below to start creating your new posting.</h4>
           </div>
-          <a href="#" onClick={() => console.log("kliknuo sam")}>
+          <a href="/newOpportunity" onClick={() => console.log("kliknuo sam")}>
             <div className="createOpportunity">
               <AddIcon fontSize="large" />
               <h3>Create Opportunity</h3>

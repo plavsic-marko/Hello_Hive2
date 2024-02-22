@@ -32,9 +32,17 @@ const TermsConditions = () => {
 
     axios.delete("https://jsonplaceholder.typicode.com/users" + user.id);
   };
-
+  /*
   const addUser = () => {
     const [newUser, setNewUser] = useState({ id: 0, name: "" });
+    setUsers([newUser, ...users]);
+    axios
+      .post("https://jsonplaceholder.typicode.com/users" + newUser)
+      .then((res) => setUsers([res.data, ...users]));
+  };*/
+
+  const addUser = () => {
+    const newUser = { id: 0, name: "Marko" };
     setUsers([newUser, ...users]);
     axios
       .post("https://jsonplaceholder.typicode.com/users" + newUser)

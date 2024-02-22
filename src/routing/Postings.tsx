@@ -15,6 +15,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { Link } from "react-router-dom";
 import columnsData from "../data/OpprotunitiesData";
 import { useState } from "react";
+import TablePagination from "@mui/material";
 
 const headRowStyle = {
   color: "#12c2e9",
@@ -47,7 +48,21 @@ const buttonStyle = {
 };
 
 const Postings = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
+
+  /* ADJUSTMENT */
+
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (
+    event: React.ChangeEvent<unknown>,
+    newPage: number
+  ) => {
+    setPage(newPage);
+  };
+
+  const totalPages = Math.ceil(columnsData.length / rowsPerPage) - 1;
+
   return (
     <div className="content_wrapper">
       <div className="createOpportunityContainer">
@@ -116,65 +131,61 @@ const Postings = () => {
                 </TableCell>
               </TableHead>
               <TableBody>
-                {columnsData.slice(0, 5).map((item) => (
-                  <TableRow
-                    key={item.id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell sx={fieldTextName} scope="row" align="center">
-                      <div className="nameContainer">
-                        <div className="title"></div>
-                        {item.name}
-                      </div>
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.Type}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.Applicants}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.Status}
-                    </TableCell>
-                    <TableCell sx={statusTextLive} align="right">
-                      {item.Location}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      {item.Deadline}
-                    </TableCell>
-                    <TableCell sx={fieldText} align="right">
-                      <div className="buttonCellContainer">
-                        <Button sx={buttonStyle} variant="contained">
-                          View Applicants
-                        </Button>
-                        <a href="#">
-                          <CreateIcon
-                            color="disabled"
-                            sx={{
-                              border: "2px solid #b5b3b3",
-                              borderRadius: 20,
-                              padding: 0.5,
-                            }}
-                          />
-                        </a>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {columnsData
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((item) => (
+                    <TableRow
+                      key={item.id}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell sx={fieldTextName} scope="row" align="center">
+                        <div className="nameContainer">
+                          <div className="title"></div>
+                          {item.name}
+                        </div>
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.Type}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.Applicants}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.Status}
+                      </TableCell>
+                      <TableCell sx={statusTextLive} align="right">
+                        {item.Location}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        {item.Deadline}
+                      </TableCell>
+                      <TableCell sx={fieldText} align="right">
+                        <div className="buttonCellContainer">
+                          <Button sx={buttonStyle} variant="contained">
+                            View Applicants
+                          </Button>
+                          <a href="#">
+                            <CreateIcon
+                              color="disabled"
+                              sx={{
+                                border: "2px solid #b5b3b3",
+                                borderRadius: 20,
+                                padding: 0.5,
+                              }}
+                            />
+                          </a>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>
           <div className="pagination_table">
             <Pagination
-              size="large"
-              variant="outlined"
-              color="primary"
-              count={10}
               page={page}
-              onChange={(event, newPage) => setPage(newPage)}
-              shape="rounded"
-              hidePrevButton
-              hideNextButton
+              onChange={handleChangePage}
+              count={totalPages}
             />
           </div>
         </div>

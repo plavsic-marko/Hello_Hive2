@@ -1,41 +1,309 @@
-.formaPrva{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    height: min-content;
-    padding: 20px;
-    background-color: rgb(218, 237, 243);
-} 
-
-.error {
-    color: red;
-    font-size: 0.75rem;
-    text-align: left;
-    margin-top: 0.25rem;
-  }
-
-  input.input-error,
-select.input-error {
-  border-color: red;
-  margin-inline: 40px;
-  margin-top: 15px;
-  padding: 10px;
+::-webkit-scrollbar {
+    width: 20px;
+    height: 13px;
+    color: #4A3291;
+    border-radius: inherit;
 }
 
-.input-form{
-    background: inherit;
-    margin-inline: 40px;
-    margin-top: 15px;
+::-webkit-scrollbar-thumb {
+    background-color: rgb(189, 188, 188);
+    border: 5px solid white;
+    border-radius: inherit;
+
+}
+
+::-webkit-scrollbar-track {
+    margin: 10px;
+    border-radius: inherit;
+}
+
+
+.opportunityContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 95%;
+    background-color: white;
+    margin: 30px;
+    border-radius: 15px;
+}
+
+.OpportunityContainerHeadline {
+    display: flex;
+    height: 65px;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    color: #4A3291;
+    margin-left: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+}
+
+.workingStatus {
+    display: flex;
+    height: 80px;
+    padding: 8px;
+    margin-left: 20px;
+    margin-right: 25px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    background-color: rgba(219, 242, 252, 1);
+    border: 3px solid rgb(144, 220, 252);
+    color: #28B2D8;
+    border-radius: 15px;
+}
+
+.bodySection {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.bodyLeftContainer,
+.bodyRightContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgb(228, 228, 228);
+    box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    overflow-y: scroll;
+}
+
+.bodyLeftHeadline {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    display: flex;
+    color: #4A3291;
+}
+
+.toggleDeadlineO {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    padding: 18px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 25px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    background-color: #BBDFF2;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    color: #4A3291;
+    font-weight: 600;
+}
+
+
+.toggleDeadlineC {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    padding: 18px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 25px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    background-color: #BBDFF2;
+    border-radius: 25px;
+    color: #4A3291;
+    font-weight: 600;
+}
+
+.buttonAboutUs {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.ContainerDeadline {
+    display: flex;
+    width: inherit;
+    height: 250px;
+    margin-top: 0;
+    margin-left: 20px;
+    margin-right: 25px;
+    background: #EEF9FF;
+
+}
+
+.deadline1,
+.deadline2 {
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid grey;
+}
+
+.form_container {
+    display: flex;
+    width: inherit;
+    margin-top: 0;
+    margin-left: 20px;
+    margin-right: 25px;
+    background: #EEF9FF;
+
+
+}
+
+
+.form_container_Closed {
+    display: none;
+
+}
+
+
+.bodyRightContainer {
+    margin-right: 30px;
+    overflow: scroll;
+}
+
+.rightContainerHeadline {
+    margin: 25px;
+    color: #4A3291;
+}
+
+.publicPreview {
+    display: flex;
+    width: 93%;
+    height: 40px;
+    padding: 8px;
+    margin-left: 20px;
+    margin-right: 25px;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    background-color: #fffaf8;
+    border: 2px solid rgb(246, 137, 60);
+    color: rgb(246, 137, 60);
+    border-radius: 15px;
+}
+
+.p_publicPrev {
+    margin-left: 10px;
+    color: rgb(246, 137, 60);
+    font-size: 20px;
+}
+
+.bannerCv {
+    display: flex;
+    height: 850px;
+    margin: 20px;
+    background-color: #B6D3E2;
+    border-radius: 20px;
+}
+
+.cvCaption {
+    color: #4A3291;
+}
+
+.detailsBanner {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    margin: 30px;
+}
+
+.DetailsBannerHeadline {
+    color: #4A3291;
+    text-align: left;
+}
+
+
+.hhBanner {
+    width: auto;
+    height: 100px;
+    border-radius: 20px;
+
+
+}
+
+.hhBanner {
+    display: flex;
+    width: 90%;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background: url(/public/7b283b28f8ccce48dbb4dc2e582e543b.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+
+
+.new {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: rgb(233, 227, 227)
+}
+
+.newBadge {
+    width: 25px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2px;
+    font-size: 10px;
+}
+
+.hhBannerinfo {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+
+}
+
+.bannerText {
+    color: #fff;
+    text-shadow: 0px 1px black;
+    font-size: 14px;
+    padding: 0;
+    margin: 10px;
+}
+
+
+
+
+.bannerEmail,
+.bannerPhone {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    height: 20px;
+    width: 250px;
+}
+
+
+.descriptionContainer {
+    margin-left: 30px;
+    margin-right: 10px;
     padding: 10px;
 }
 
-select.input-form{
-    background-color: white;
-}
-
-
-
-.dugme_forma{
-    margin-top: 15px;
-    background-color: green;
+.rightPageButtons {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
 }
